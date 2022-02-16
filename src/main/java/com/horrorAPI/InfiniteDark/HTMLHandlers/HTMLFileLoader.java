@@ -3,10 +3,10 @@ package com.horrorAPI.InfiniteDark.HTMLHandlers;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-
 import java.io.*;
 import java.util.Scanner;
 
+// Base HTML file loader
 public class HTMLFileLoader implements Serializable {
 
     private Document doc;
@@ -16,12 +16,17 @@ public class HTMLFileLoader implements Serializable {
     private String pathToFile;
     private boolean valid;
 
+    // Default constructor
+    // Initialized to an invalid state
     public HTMLFileLoader() {
         this.valid = false;
         this.pathToFile = "";
         this.stringBuilderDoc = new StringBuilder("");
     }
 
+    // String constructor
+    // Opens file and parses to fill member variables
+    // Initialized to valid state
     public HTMLFileLoader(String filePath) {
         this.pathToFile = filePath;
         this.file = new File(filePath);
@@ -46,15 +51,18 @@ public class HTMLFileLoader implements Serializable {
     public void setDoc(Document newDoc) {
         this.doc = newDoc;
         this.stringDoc = this.doc.html();
-//        try {
-//            FileWriter fileWriter = new FileWriter(pathToFile);
-//            fileWriter.write(this.stringDoc);
-//            fileWriter.close();
-//        }
-//        catch (IOException e) {
-//            this.valid = false;
-//            e.printStackTrace();
-//        }
+    }
+
+    public void saveDocChanges() {
+        try {
+            FileWriter fileWriter = new FileWriter(pathToFile);
+            fileWriter.write(this.stringDoc);
+            fileWriter.close();
+        }
+        catch (IOException e) {
+            this.valid = false;
+            e.printStackTrace();
+        }
     }
 
     public void setFile(String filePath) {
