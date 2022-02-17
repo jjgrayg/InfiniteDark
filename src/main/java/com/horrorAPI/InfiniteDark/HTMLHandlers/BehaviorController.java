@@ -1,31 +1,44 @@
 package com.horrorAPI.InfiniteDark.HTMLHandlers;
 
-import com.horrorAPI.InfiniteDark.Enums.DOMSection;
+import com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors.BehaviorInterface;
 import com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors.HTMLBehavior;
-import com.horrorAPI.InfiniteDark.HTMLHandlers.HTMLFileLoader;
+import com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors.ScriptBehavior;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTime;
 import org.jsoup.nodes.Document;
 
-import java.io.Serializable;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
-public class BehaviorController extends HTMLFileLoader implements Serializable {
+public class BehaviorController extends HTMLFileLoader {
 
+    private String id;
+    private String fullPath;
+    private String basePath = "src/main/Objects";
     private HTMLFileLoader fileLoader;
-    private ArrayList<HTMLBehavior> behaviors;
+    private ArrayList<BehaviorInterface> behaviors;
 
-    public BehaviorController(String filePath, String @NotNull [] tag_arr) {
+    public BehaviorController(@NotNull String filePath) {
+        String [] arr = filePath.split("\\\\");
+        this.id = arr[arr.length - 1].replace(".", "") + "_Behavior_Controller";
+        this.fullPath = basePath + "/" + this.id + ".behaviorController";
         this.behaviors = new ArrayList<>();
         this.fileLoader = new HTMLFileLoader(filePath);
     }
 
-    public void print() {
-        System.out.println(this.fileLoader.getStringDoc());
+    public BehaviorController(URL filePath) {
+        this.behaviors = new ArrayList<>();
+        try {
+            this.fileLoader = new HTMLFileLoader(filePath);
+        }
+        catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setTags(String @NotNull [] tag_arr) {
-        this.behaviors.clear();
+    public void print() {
+        System.out.println(this.fileLoader.getStringDoc());
     }
 
     public void addBehavior(String tagName, String changeTo, DateTime dateToAct) {
@@ -39,8 +52,8 @@ public class BehaviorController extends HTMLFileLoader implements Serializable {
     }
 
     // Implement later
-    public void addBehavior(String script, DOMSection section, DateTime dateToAct) {
-        //TODO define script behavior class
+    public void addBehavior(ScriptBehavior newBehavior) {
+        this.behaviors.add(newBehavior);
     }
 
     public void executeBehaviors() {
@@ -49,7 +62,7 @@ public class BehaviorController extends HTMLFileLoader implements Serializable {
 
     private void replace() {
         Document tempDoc = this.getDoc().clone();
-        for(HTMLBehavior behavior : behaviors) {
+        for(BehaviorInterface behavior : behaviors) {
             tempDoc = behavior.execute(tempDoc);
         }
         this.setDoc(tempDoc);

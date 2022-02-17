@@ -5,9 +5,10 @@ import org.apache.commons.math3.util.Pair;
 import org.joda.time.DateTime;
 import org.jsoup.nodes.Document;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class ScriptBehavior implements BehaviorInterface{
+public class ScriptBehavior implements BehaviorInterface {
     public void setBehavior(String changeTo, DateTime dateToAct) {
 
     }

@@ -1,14 +1,20 @@
 package com.horrorAPI.InfiniteDark.HTMLHandlers;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 
 // Base HTML file loader
-public class HTMLFileLoader implements Serializable {
+public class HTMLFileLoader {
 
+    private String id;
+    private String fullPath;
+    private String basePath = "src/main/Objects";
     private Document doc;
     private String stringDoc;
     private StringBuilder stringBuilderDoc;
@@ -27,9 +33,24 @@ public class HTMLFileLoader implements Serializable {
     // String constructor
     // Opens file and parses to fill member variables
     // Initialized to valid state
-    public HTMLFileLoader(String filePath) {
+    public HTMLFileLoader(@NotNull String filePath) {
         this.pathToFile = filePath;
+        String [] arr = filePath.split("\\\\");
+        this.id = arr[arr.length - 1].replace(".", "");
+        this.fullPath = basePath + "/" + this.id + ".Loader";
         this.file = new File(filePath);
+        this.valid = true;
+        this.stringBuilderDoc = new StringBuilder("");
+        parseFile();
+        parseStringDoc();
+    }
+
+    public HTMLFileLoader(@NotNull URL filePath) throws URISyntaxException {
+        this.pathToFile = filePath.toURI().toString();
+        this.file = new File(filePath.toURI());
+        String[] arr = this.pathToFile.split("\\\\");
+        this.id = arr[arr.length - 1].replace(".", "");
+        this.fullPath = basePath + "/" + this.id + ".Loader";
         this.valid = true;
         this.stringBuilderDoc = new StringBuilder("");
         parseFile();

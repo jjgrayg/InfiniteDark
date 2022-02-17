@@ -1,12 +1,13 @@
 package com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors;
 
+import com.horrorAPI.InfiniteDark.Datatypes.Pair;
 import com.horrorAPI.InfiniteDark.Enums.Comparison;
-import org.apache.commons.math3.util.Pair;
 import org.joda.time.DateTime;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
@@ -18,6 +19,7 @@ public class HTMLBehavior implements BehaviorInterface {
     private final String tagName;
     private String change;
     private boolean valid;
+    private boolean executed = false;
 
     public HTMLBehavior(String tagName) {
         this.tagName = tagName;
@@ -33,19 +35,24 @@ public class HTMLBehavior implements BehaviorInterface {
         this.valid = true;
     }
 
-    public void setBehavior(String changeTo, HashMap<String, Pair<Comparison, Integer>> conditionMap, DateTime dateToAct){
+    public void setBehavior(String changeTo, Comparison comp, Integer num, DateTime dateToAct){
         this.change = changeTo;
-        this.conditionMap = conditionMap;
+        Pair<Comparison, Integer> pair = new Pair<>(comp, num);
+        this.conditionMap.put(this.tagName, pair);
         this.actionDate = dateToAct;
         this.valid = true;
     }
 
-
-    public void setBehavior(String changeTo, HashMap<String, Pair<Comparison, Integer>> conditionMap) {
+    public void setBehavior(String changeTo,  Comparison comp, Integer num) {
         this.change = changeTo;
-        this.conditionMap = conditionMap;
+        Pair<Comparison, Integer> pair = new Pair<>(comp, num);
+        this.conditionMap.put(this.tagName, pair);
         this.actionDate = null;
         this.valid = true;
+    }
+
+    public void setActionDate(DateTime newDate) {
+        this.actionDate = newDate;
     }
 
     public boolean getConditionsMet(Document doc) {
@@ -95,10 +102,8 @@ public class HTMLBehavior implements BehaviorInterface {
                 }
             }
         }
-        if (this.actionDate != null) {
-            if (this.actionDate.isAfterNow()) {
-                return false;
-            }
+        if (this.actionDate != null && this.actionDate.isAfterNow()) {
+            return false;
         }
         return true;
     }
@@ -108,18 +113,15 @@ public class HTMLBehavior implements BehaviorInterface {
         Elements elsToReplace = tempDoc.select(this.tagName);
         for (Element e : elsToReplace) {
             e.html(this.change);
+            this.executed = true;
         }
         return tempDoc;
     }
 
     public Document execute(Document doc) {
         Document tempDoc = doc.clone();
-        Elements elsToReplace = tempDoc.select(this.tagName);
-        for (Element e : elsToReplace) {
-            if (this.getConditionsMet(tempDoc)) {
-                e.html(this.change);
-                System.out.println(e);
-            }
+        if (this.getConditionsMet(tempDoc)) {
+            tempDoc = this.unconditionalExecute(tempDoc);
         }
         return tempDoc;
     }
