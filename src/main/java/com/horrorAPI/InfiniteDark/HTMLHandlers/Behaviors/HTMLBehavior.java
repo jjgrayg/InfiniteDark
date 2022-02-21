@@ -2,11 +2,13 @@ package com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors;
 
 import com.horrorAPI.InfiniteDark.Datatypes.Pair;
 import com.horrorAPI.InfiniteDark.Enums.Comparison;
+import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTime;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.swing.text.html.HTML;
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -21,10 +23,17 @@ public class HTMLBehavior implements BehaviorInterface {
     private boolean valid;
     private boolean executed = false;
 
+    public HTMLBehavior() {
+        this.tagName = null;
+        this.conditionMap = new HashMap<>();
+        this.actionDate = null;
+        this.valid = false;
+    }
+
     public HTMLBehavior(String tagName) {
         this.tagName = tagName;
         this.conditionMap = new HashMap<>();
-        this.actionDate = new DateTime();
+        this.actionDate = null;
         this.valid = false;
     }
 
@@ -102,13 +111,19 @@ public class HTMLBehavior implements BehaviorInterface {
                 }
             }
         }
-        if (this.actionDate != null && this.actionDate.isAfterNow()) {
-            return false;
-        }
-        return true;
+        return this.actionDate == null || !this.actionDate.isAfterNow();
     }
 
-    public Document unconditionalExecute(Document doc) {
+    public void setConditionMap(HashMap<String, Pair<Comparison, Integer>> conditionMap) {
+        this.conditionMap = conditionMap;
+    }
+
+    public void setAttributes(String change, DateTime actionDate) {
+        this.actionDate = actionDate;
+        this.change = change;
+    }
+
+    public Document unconditionalExecute(@NotNull Document doc) {
         Document tempDoc = doc.clone();
         Elements elsToReplace = tempDoc.select(this.tagName);
         for (Element e : elsToReplace) {
@@ -118,11 +133,26 @@ public class HTMLBehavior implements BehaviorInterface {
         return tempDoc;
     }
 
-    public Document execute(Document doc) {
+    public Document execute(@NotNull Document doc) {
         Document tempDoc = doc.clone();
         if (this.getConditionsMet(tempDoc)) {
             tempDoc = this.unconditionalExecute(tempDoc);
         }
         return tempDoc;
+    }
+
+    @Override
+    public String toString() {
+        String string = new String("================\n");
+        if (this.tagName != null)
+            string += "Tag: " + this.tagName;
+        if (this.change != null)
+            string += ", Change: " + this.change;
+        if (this.actionDate != null)
+            string +=", DateToAct: " + this.actionDate.toString();
+        if (this.conditionMap != null)
+            string +=", ConditionMap: " + this.conditionMap.toString();
+        string += "\n================";
+        return string;
     }
 }

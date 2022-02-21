@@ -6,4 +6,5 @@ public interface BehaviorInterface {
     boolean getConditionsMet(Document doc);
     Document unconditionalExecute(Document doc);
     Document execute(Document doc);
+    String toString();
 }

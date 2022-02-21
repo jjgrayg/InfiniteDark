@@ -9,6 +9,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class ScriptBehavior implements BehaviorInterface {
+
+    public ScriptBehavior() {
+
+    }
+
     public void setBehavior(String changeTo, DateTime dateToAct) {
 
     }
@@ -31,5 +36,9 @@ public class ScriptBehavior implements BehaviorInterface {
 
     public Document execute(Document doc) {
         return doc;
+    }
+
+    public String toJson() {
+        return new String();
     }
 }

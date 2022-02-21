@@ -1,4 +1,4 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers;
+package com.horrorAPI.InfiniteDark.HTMLHandlers.Loader;
 
 import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;
@@ -12,9 +12,6 @@ import java.util.Scanner;
 // Base HTML file loader
 public class HTMLFileLoader {
 
-    private String id;
-    private String fullPath;
-    private String basePath = "src/main/Objects";
     private Document doc;
     private String stringDoc;
     private StringBuilder stringBuilderDoc;
@@ -35,12 +32,9 @@ public class HTMLFileLoader {
     // Initialized to valid state
     public HTMLFileLoader(@NotNull String filePath) {
         this.pathToFile = filePath;
-        String [] arr = filePath.split("\\\\");
-        this.id = arr[arr.length - 1].replace(".", "");
-        this.fullPath = basePath + "/" + this.id + ".Loader";
         this.file = new File(filePath);
         this.valid = true;
-        this.stringBuilderDoc = new StringBuilder("");
+        this.stringBuilderDoc = new StringBuilder();
         parseFile();
         parseStringDoc();
     }
@@ -48,13 +42,14 @@ public class HTMLFileLoader {
     public HTMLFileLoader(@NotNull URL filePath) throws URISyntaxException {
         this.pathToFile = filePath.toURI().toString();
         this.file = new File(filePath.toURI());
-        String[] arr = this.pathToFile.split("\\\\");
-        this.id = arr[arr.length - 1].replace(".", "");
-        this.fullPath = basePath + "/" + this.id + ".Loader";
         this.valid = true;
-        this.stringBuilderDoc = new StringBuilder("");
+        this.stringBuilderDoc = new StringBuilder();
         parseFile();
         parseStringDoc();
+    }
+
+    public String getFilePath() {
+        return this.file.getPath();
     }
 
     public String getStringDoc() {
