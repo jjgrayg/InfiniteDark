@@ -1,15 +1,14 @@
 package com.horrorAPI.InfiniteDark.Controllers;
 
-import com.horrorAPI.InfiniteDark.Enums.Comparison;
-import com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors.HTMLBehavior;
-import com.horrorAPI.InfiniteDark.HTMLHandlers.ExtendedDoc;
-import com.horrorAPI.InfiniteDark.HTMLHandlers.ExtendedDocFactory;
+import com.ExtendedDoc.Enums.Comparison;
+import com.ExtendedDoc.HTMLHandlers.Behaviors.HTMLBehavior;
+import com.ExtendedDoc.HTMLHandlers.ExtendedDoc;
+import com.ExtendedDoc.HTMLHandlers.ExtendedDocFactory;
 import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
-import java.io.IOException;
 
 @RestController
 public class RoutingController {
