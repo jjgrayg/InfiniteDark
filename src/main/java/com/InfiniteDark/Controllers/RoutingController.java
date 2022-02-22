@@ -1,4 +1,4 @@
-package com.horrorAPI.InfiniteDark.Controllers;
+package com.InfiniteDark.Controllers;
 
 import com.ExtendedDoc.Enums.Comparison;
 import com.ExtendedDoc.HTMLHandlers.Behaviors.HTMLBehavior;
