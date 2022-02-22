@@ -24,7 +24,7 @@ public class HTMLFileLoader {
     public HTMLFileLoader() {
         this.valid = false;
         this.pathToFile = "";
-        this.stringBuilderDoc = new StringBuilder("");
+        this.stringBuilderDoc = new StringBuilder();
     }
 
     // String constructor

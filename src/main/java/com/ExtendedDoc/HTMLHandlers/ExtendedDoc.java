@@ -21,11 +21,11 @@ import java.util.ArrayList;
 
 public class ExtendedDoc extends HTMLFileLoader {
 
-    private String id;
-    private String fullPath;
+    private String id = null;
+    private String fullPath = null;
     private final String basePath = "src/main/ExtendedDocs";
-    private JSONExtendedDoc jsonFormat;
-    private HTMLFileLoader fileLoader;
+    private JSONExtendedDoc jsonFormat = new JSONExtendedDoc();
+    private HTMLFileLoader fileLoader = new HTMLFileLoader();
     private ArrayList<HTMLBehavior> behaviors;
 
     /**
@@ -34,11 +34,6 @@ public class ExtendedDoc extends HTMLFileLoader {
      * or the function setFile() is called on the object.
      */
     protected ExtendedDoc() {
-        this.id = null;
-        this.fullPath = null;
-        this.behaviors = new ArrayList<>();
-        this.fileLoader = new HTMLFileLoader();
-        this.jsonFormat = new JSONExtendedDoc();
         new File("src/main/ExtendedDocs").mkdirs();
     }
 

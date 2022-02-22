@@ -1,11 +1,10 @@
 package com.ExtendedDoc.Converters;
 
 import com.ExtendedDoc.HTMLHandlers.Behaviors.HTMLBehavior;
-import com.ExtendedDoc.HTMLHandlers.ExtendedDoc;
 
 import java.util.ArrayList;
 
-public class JSONExtendedDoc extends ExtendedDoc {
+public class JSONExtendedDoc {
 	private String filePath;
 	private ArrayList<HTMLBehavior> behaviors;
 
@@ -28,16 +27,10 @@ public class JSONExtendedDoc extends ExtendedDoc {
 	}
 
 	public String getFilePath() {
-		return filePath;
+		return this.filePath;
 	}
 
 	public ArrayList<HTMLBehavior> getBehaviors() {
-		return behaviors;
-	}
-
-	public ExtendedDoc createFromJson() {
-		ExtendedDoc extendedDoc = new ExtendedDoc(this.filePath);
-		extendedDoc.setAllBehaviors(this.behaviors);
-		return extendedDoc;
+		return this.behaviors;
 	}
 }

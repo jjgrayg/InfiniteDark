@@ -29,7 +29,6 @@ public class RoutingController {
         t.addBehavior(temp[1], "<h1>Taco Tuesday</h1>", tempDate);
         t.addBehavior(newBehavior);
         t.executeBehaviors();
-        docFactory.saveExtendedDoc(t);
         return t.getStringDoc();
 //        ExtendedDoc t;
 //        try {
