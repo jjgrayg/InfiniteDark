@@ -1,4 +1,4 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers.Loader;
+package com.ExtendedDoc.HTMLHandlers.Loader;
 
 import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;

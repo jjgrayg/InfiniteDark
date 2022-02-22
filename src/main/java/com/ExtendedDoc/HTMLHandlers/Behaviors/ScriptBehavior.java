@@ -1,11 +1,10 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors;
+package com.ExtendedDoc.HTMLHandlers.Behaviors;
 
-import com.horrorAPI.InfiniteDark.Enums.Comparison;
+import com.ExtendedDoc.Enums.Comparison;
 import org.apache.commons.math3.util.Pair;
 import org.joda.time.DateTime;
 import org.jsoup.nodes.Document;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 public class ScriptBehavior implements BehaviorInterface {

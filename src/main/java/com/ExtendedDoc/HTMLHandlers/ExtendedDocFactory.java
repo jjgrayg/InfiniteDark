@@ -1,4 +1,4 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers;
+package com.ExtendedDoc.HTMLHandlers;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

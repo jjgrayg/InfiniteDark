@@ -1,11 +1,12 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers;
+package com.ExtendedDoc.HTMLHandlers;
 
+import com.ExtendedDoc.Converters.JSONExtendedDoc;
+import com.ExtendedDoc.Converters.fatboyindustrial.gsonjodatime.Converters;
+import com.ExtendedDoc.HTMLHandlers.Behaviors.BehaviorInterface;
+import com.ExtendedDoc.HTMLHandlers.Behaviors.HTMLBehavior;
+import com.ExtendedDoc.HTMLHandlers.Loader.HTMLFileLoader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.horrorAPI.InfiniteDark.Converters.JSONExtendedDoc;
-import com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors.*;
-import com.horrorAPI.InfiniteDark.HTMLHandlers.Loader.HTMLFileLoader;
-import com.horrorAPI.InfiniteDark.Converters.fatboyindustrial.gsonjodatime.Converters;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTime;
 import org.jsoup.nodes.Document;

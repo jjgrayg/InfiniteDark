@@ -1,4 +1,4 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors;
+package com.ExtendedDoc.HTMLHandlers.Behaviors;
 
 import org.jsoup.nodes.Document;
 

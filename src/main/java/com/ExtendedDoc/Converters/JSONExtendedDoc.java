@@ -1,7 +1,7 @@
-package com.horrorAPI.InfiniteDark.Converters;
+package com.ExtendedDoc.Converters;
 
-import com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors.HTMLBehavior;
-import com.horrorAPI.InfiniteDark.HTMLHandlers.ExtendedDoc;
+import com.ExtendedDoc.HTMLHandlers.Behaviors.HTMLBehavior;
+import com.ExtendedDoc.HTMLHandlers.ExtendedDoc;
 
 import java.util.ArrayList;
 

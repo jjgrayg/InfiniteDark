@@ -1,8 +1,8 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors;
+package com.ExtendedDoc.HTMLHandlers.Behaviors;
 
 import com.google.gson.InstanceCreator;
-import com.horrorAPI.InfiniteDark.Datatypes.Pair;
-import com.horrorAPI.InfiniteDark.Enums.Comparison;
+import com.ExtendedDoc.Datatypes.Pair;
+import com.ExtendedDoc.Enums.Comparison;
 import org.joda.time.DateTime;
 
 import java.lang.reflect.Type;

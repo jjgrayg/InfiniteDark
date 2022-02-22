@@ -1,15 +1,13 @@
-package com.horrorAPI.InfiniteDark.HTMLHandlers.Behaviors;
+package com.ExtendedDoc.HTMLHandlers.Behaviors;
 
-import com.horrorAPI.InfiniteDark.Datatypes.Pair;
-import com.horrorAPI.InfiniteDark.Enums.Comparison;
+import com.ExtendedDoc.Datatypes.Pair;
+import com.ExtendedDoc.Enums.Comparison;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTime;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.swing.text.html.HTML;
-import java.io.Serializable;
 import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;

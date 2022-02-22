@@ -1,4 +1,4 @@
-package com.horrorAPI.InfiniteDark.Datatypes;
+package com.ExtendedDoc.Datatypes;
 
 import java.io.Serializable;
 
