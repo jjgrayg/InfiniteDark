@@ -11,13 +11,19 @@ function destroyBody() {
             duration: 0.002,
             textAlign: "center"});
 
+
     let t2 = gsap.timeline();
     let text2 = $("#textbody");
-    t2.flickerTo(text2, {text: "<p></p>", duration: 0.0002});
-    t2.flickerTo(text2, {text: "<p></p>", duration: 10});
-    t2.flickerTo(text2, {text: "<p>Come back in 5 minutes. Give us some time to fix what <b style='color: rgb(255, 0, 0)'><i>you</i></b> have broken.</p>",
-        duration: 0,
-        textAlign: "center"});
+    t2.flickerTo(text2, {text: "<p></p>", duration: 0.0002})
+        .flickerTo(text2, {text: "<p></p>", duration: 10})
+        .flickerTo(text2, {text: "<p>Come back in 5 minutes. Give us some time to fix what <b style='color: rgb(255, 0, 0)'><i>you</i></b> have broken.</p>",
+            duration: 0,
+            textAlign: "center"});
+
+    let t3 = gsap.timeline();
+    t3.flickerTo($("title"), {duration: 5})
+        .flickerTo($("title"), {text: "Leave",
+            duration: 0.0002})
 }
 
 function isVisible(querySelector) {

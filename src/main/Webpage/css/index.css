@@ -25,22 +25,30 @@
     justify-content: center;
     align-items: center;
     width: 70vw;
+    display: inline-flex;
 }
 
 #textbody p {
     font-size: 12px;
 }
 
-.flicker {
+.text-flicker {
     animation-duration: 0.01s;
     animation-name: textflicker;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-.flicker-sm {
+.text-flicker-sm {
     animation-duration: 0.01s;
     animation-name: textflicker-sm;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.box-flicker {
+    animation-duration: 0.01s;
+    animation-name: flickershadow;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
@@ -57,9 +65,18 @@
 
 @keyframes textflicker-sm {
     from {
-        text-shadow: 0.5px 0 0 #ea36af, -1px 0 0 #75fa69;
+        text-shadow: 0.75px 0 0 #ea36af, -1.5px 0 0 #75fa69;
     }
     to {
-        text-shadow: 1px 0.25px 1px #ea36af, -0.5px -0.25px 1px #75fa69;
+        text-shadow: 1.5px 0.375px 1.5px #ea36af, -0.75px -0.375px 1.5px #75fa69;
+    }
+}
+
+@keyframes flickershadow {
+    from {
+        box-shadow: 0.75px 0 0 #ea36af, -1.5px 0 0 #75fa69;
+    }
+    to {
+        box-shadow: 1.5px 0.375px 1.5px #ea36af, -0.75px -0.375px 1.5px #75fa69;
     }
 }
