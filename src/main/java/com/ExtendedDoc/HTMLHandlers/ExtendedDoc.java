@@ -161,6 +161,16 @@ public class ExtendedDoc extends HTMLFileLoader {
     }
 
     /**
+     * Returns the JSon format of the ExtendedDoc and its behaviors
+     * @return A String containing the JSon format of this ExtendedDoc
+     */
+    public String getJson() {
+        Gson gson = Converters.registerDateTime(new GsonBuilder()).create();
+        String json = gson.toJson(this.jsonFormat);
+        return json;
+    }
+
+    /**
      * Iterates over all tracked behaviors and calls the execute() function on
      * each.
      */

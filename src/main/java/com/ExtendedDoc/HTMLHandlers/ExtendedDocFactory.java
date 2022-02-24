@@ -45,4 +45,7 @@ public final class ExtendedDocFactory extends ExtendedDoc {
 	public void saveExtendedDoc(@NotNull ExtendedDoc exDoc) {
 		exDoc.saveAsJson();
 	}
+	public String getJsonExtendedDoc (@NotNull ExtendedDoc exDoc) {
+		return exDoc.getJson();
+	}
 }

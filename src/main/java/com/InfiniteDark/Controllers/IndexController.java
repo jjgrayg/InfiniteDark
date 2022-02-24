@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 
 @RestController
-public class GetController {
+public class IndexController {
 
-
+    //TODO handle stage incrementation serverside
     @GetMapping("/")
     public String base() {
         ExtendedDocFactory docFactory = new ExtendedDocFactory();
-        String resource = new File("src/main/Webpage/index.html").getPath();
+        String resource = new File("src/main/webpage/index.html").getPath();
         ExtendedDoc t = docFactory.createExtendedDoc(resource);
         docFactory.saveExtendedDoc(t);
         return t.getStringDoc();
