@@ -14,7 +14,7 @@ public class InfiniteDarkApplication {
 
 	public static void main(String[] args) {
 //		File db = new File("src/main/database");
-//		String filePath = db.getAbsolutePath() + "\\test.db";
+//		String filePath = db.getAbsolutePath() + "\\data.db";
 //		createNewDatabase(filePath);
 		SpringApplication.run(InfiniteDarkApplication.class, args);
 	}

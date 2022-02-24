@@ -16,7 +16,7 @@ public class SessionController {
 
     public SessionController() {
         File db = new File("src/main/database");
-        String url = "jdbc:sqlite:" + db.getAbsolutePath() + "\\test.db";
+        String url = "jdbc:sqlite:" + db.getAbsolutePath() + "\\data.db";
 
         try {
             this.conn = DriverManager.getConnection(url);
