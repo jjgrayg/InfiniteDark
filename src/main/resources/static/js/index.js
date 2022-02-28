@@ -6,7 +6,7 @@ function destroyBody() {
     let t1 = gsap.timeline();
     let text1 = $("#header h1");
     t1.flickerTo(text1, {duration: 5,
-            textAlign: "center"})
+        textAlign: "center"})
         .flickerTo(text1, {text: "Leave",
             duration: 0.002,
             textAlign: "center"});
@@ -39,6 +39,7 @@ function isVisible(querySelector) {
 }
 
 function advance() {
+    $("#header").off("click");
     $.post("advanceStage1");
 }
 

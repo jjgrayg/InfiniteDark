@@ -48,4 +48,10 @@ public final class ExtendedDocFactory extends ExtendedDoc {
 	public String getJsonExtendedDoc (@NotNull ExtendedDoc exDoc) {
 		return exDoc.getJson();
 	}
+
+	public ExtendedDoc createFromJSONString(String json){
+		ExtendedDoc doc = new ExtendedDoc();
+		doc.createFromJsonString(json);
+		return doc;
+	}
 }

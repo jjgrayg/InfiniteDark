@@ -90,7 +90,6 @@ public class DatabaseHandler {
 
 	/**
 	 * Checks if the session already exists in the database "sessions" table
-	 * @return A boolean value set to true if the session was found, and false otherwise
 	 */
 	public static void setSessionPage(String sessionID, String JSONDoc) {
 		String sql = "UPDATE page SET JSONDoc=? WHERE SessionID=?";
@@ -109,7 +108,6 @@ public class DatabaseHandler {
 
 	/**
 	 * Checks if the session already exists in the database "sessions" table
-	 * @return A boolean value set to true if the session was found, and false otherwise
 	 */
 	public static void incrementStage(String sessionID) {
 		String sql = "UPDATE sessions SET CurrentStage = CurrentStage + 1 WHERE SessionID=?";
@@ -125,5 +123,23 @@ public class DatabaseHandler {
 		}
 	}
 
-
+	public static @Nullable ExtendedDoc getSessionPage(String sessionID) {
+		String sql = "SELECT JSONDoc FROM page WHERE SessionID=?";
+		try {
+			assert conn != null;
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sessionID);
+			ResultSet rs = pstmt.executeQuery();
+			String stringDoc = rs.getString("JSONDoc");
+			ExtendedDocFactory docFactory = new ExtendedDocFactory();
+			ExtendedDoc doc = docFactory.createFromJSONString(stringDoc);
+			rs.close();
+			pstmt.close();
+			return doc;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

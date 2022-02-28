@@ -91,6 +91,24 @@ public class ExtendedDoc extends HTMLFileLoader {
     }
 
     /**
+     * Creates a new ExtendedDoc from the JSON String provided.
+     * @param json The String that contains the JSON form of the ExtendedDoc object.
+     * @return A new ExtendedDoc created from the JSON String provided.
+     */
+    protected ExtendedDoc createFromJsonString(String json) {
+        Gson gson = Converters.registerDateTime(new GsonBuilder()).create();
+        JSONExtendedDoc jsonFormat = gson.fromJson(json, JSONExtendedDoc.class);
+        this.jsonFormat = jsonFormat;
+        this.behaviors = this.jsonFormat.getBehaviors();
+        String [] arr = jsonFormat.getFilePath().split("\\\\");
+        this.id = arr[arr.length - 1].replace(".", "");
+        this.fullPath = basePath + "/" + this.id;
+        this.setFile(jsonFormat.getFilePath());
+
+        return this;
+    }
+
+    /**
      * Prints out the HTML file on which this ExtendedDoc is based.
      */
     public void print() {

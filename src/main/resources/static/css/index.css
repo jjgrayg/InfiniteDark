@@ -1,0 +1,82 @@
+#header {
+    display: flex;
+    justify-content: center;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    width: 100vw;
+    margin-top: 40px;
+    font-family: "Nintendoid1", sans-serif;
+}
+
+#header h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    font-weight: 300;
+    text-align: center;
+    width: 100%;
+}
+
+#textbody {
+    font-family: "Nintendoid1", sans-serif;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    display: inline-flex;
+}
+
+#textbody p {
+    font-size: 12px;
+}
+
+.text-flicker {
+    animation-duration: 0.01s;
+    animation-name: textflicker;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.text-flicker-sm {
+    animation-duration: 0.01s;
+    animation-name: textflicker-sm;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.box-flicker {
+    animation-duration: 0.01s;
+    animation-name: flickershadow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes textflicker {
+    from {
+        text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+    }
+    to {
+        text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+    }
+}
+
+
+@keyframes textflicker-sm {
+    from {
+        text-shadow: 0.75px 0 0 #ea36af, -1.5px 0 0 #75fa69;
+    }
+    to {
+        text-shadow: 1.5px 0.375px 1.5px #ea36af, -0.75px -0.375px 1.5px #75fa69;
+    }
+}
+
+@keyframes flickershadow {
+    from {
+        box-shadow: 0.75px 0 0 #ea36af, -1.5px 0 0 #75fa69;
+    }
+    to {
+        box-shadow: 1.5px 0.375px 1.5px #ea36af, -0.75px -0.375px 1.5px #75fa69;
+    }
+}
