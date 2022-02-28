@@ -1,4 +1,4 @@
-package com.InfiniteDark.Controllers;
+package com.InfiniteDark.controllers;
 
 import com.ExtendedDoc.HTMLHandlers.ExtendedDoc;
 import com.ExtendedDoc.HTMLHandlers.ExtendedDocFactory;
@@ -12,7 +12,7 @@ public class IndexController {
 
     //TODO handle stage incrementation serverside
     @GetMapping("/")
-    public String base() {
+    public String root() {
         ExtendedDocFactory docFactory = new ExtendedDocFactory();
         String resource = new File("src/main/webpage/index.html").getPath();
         ExtendedDoc t = docFactory.createExtendedDoc(resource);

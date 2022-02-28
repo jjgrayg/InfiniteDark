@@ -1,4 +1,4 @@
-package com.InfiniteDark.Controllers;
+package com.InfiniteDark.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
